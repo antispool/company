@@ -1,7 +1,7 @@
 company
 =======
 
-- Run next command:
+- run next commands in project root directory:
 
 curl -s http://getcomposer.org/installer | php
 
@@ -15,8 +15,9 @@ php bin/console d:f:l
 
 php bin/console s:r
 
+- open http://127.0.0.1:8000/ in browser
 
-- Default users (username:password) :
+- default users (username:password) :
  
 admin:admin (ROLE ADMIN)
 worker:worker (ROLE WORKER)

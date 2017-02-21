@@ -19,6 +19,4 @@ AppBundle\Entity\Employee:
         comment: ~
         salary:
             - NotBlank: ~
-AppBundle\Entity\Phone:
-    properties:
-        comment: ~
+            - AppBundle\Validator\Constraints\ContainsDecimal: ~
