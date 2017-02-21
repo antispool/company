@@ -9,7 +9,7 @@ php composer.phar install
 
 php bin/console a:i
 
-php bin/console d:m:m
+php bin/console d:migration:m
 
 php bin/console d:f:l
 
