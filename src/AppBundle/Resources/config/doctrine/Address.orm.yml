@@ -1,0 +1,22 @@
+AppBundle\Entity\Address:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        comment:
+            type: string
+            length: 255
+            nullable: false
+    manyToOne:
+        employee:
+            targetEntity: Employee
+            inversedBy: addresses
+            joinColumn:
+                name: employee_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

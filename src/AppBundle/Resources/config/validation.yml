@@ -1,0 +1,24 @@
+AppBundle\Entity\Employee:
+    properties:
+        firstName:
+            - NotBlank: ~
+            - Length:
+                min: 2
+                max: 255
+        lastName:
+            - NotBlank: ~
+            - Length:
+                min: 2
+                max: 255
+        gender:
+            - Choice: { choices: [0, 1], message: Choose a valid gender. }
+            - NotBlank: ~
+        dateOfBirth:
+            - Date: ~
+            - NotBlank: ~
+        comment: ~
+        salary:
+            - NotBlank: ~
+AppBundle\Entity\Phone:
+    properties:
+        comment: ~

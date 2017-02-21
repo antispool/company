@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/app/project/js/employee.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <h1>Employee editing</h1>
+
+    {{ form_start(edit_form, {'attr': {'class': 'form-horizontal'}}) }}
+    <div class="control-group">
+        <label class="control-label">first name</label>
+        <div class="controls">
+            {{ form_widget(edit_form.firstName) }}
+            {{ form_errors(edit_form.firstName) }}
+        </div>
+
+    </div>
+    <div class="control-group">
+        <label class="control-label">last name</label>
+        <div class="controls">
+            {{ form_widget(edit_form.lastName) }}
+            {{ form_errors(edit_form.lastName) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">gender</label>
+        <div class="controls">
+            {{ form_widget(edit_form.gender) }}
+            {{ form_errors(edit_form.gender) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">date of birth</label>
+        <div class="controls">
+            {{ form_widget(edit_form.dateOfBirth) }}
+            {{ form_errors(edit_form.dateOfBirth) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">comment</label>
+        <div class="controls">
+            {{ form_widget(edit_form.comment) }}
+            {{ form_errors(edit_form.comment) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">salary</label>
+        <div class="controls">
+            {{ form_widget(edit_form.salary) }}
+            {{ form_errors(edit_form.salary) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">is active</label>
+        <div class="controls">
+            {{ form_widget(edit_form.isActive) }}
+            {{ form_errors(edit_form.isActive) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">addresses</label>
+        <div class="controls">
+            {{ form_widget(edit_form.addresses) }}
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">phones</label>
+        <div class="controls">
+            {{ form_widget(edit_form.phones) }}
+        </div>
+    </div>
+    <input type="submit" value="Edit" class="btn btn-success"/>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('employee_delete', { 'id': employee.id }) }}" class="btn btn-danger">delete</a>
+    {% endif %}
+    <a href="{{ path('employee_index') }}" class="btn">Back to the list</a>
+    {{ form_end(edit_form) }}
+
+{% endblock %}

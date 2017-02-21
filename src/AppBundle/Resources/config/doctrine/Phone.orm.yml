@@ -1,0 +1,22 @@
+AppBundle\Entity\Phone:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        number:
+            type: string
+            length: 255
+            nullable: false
+    manyToOne:
+        employee:
+            targetEntity: Employee
+            inversedBy: phones
+            joinColumn:
+                name: employee_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

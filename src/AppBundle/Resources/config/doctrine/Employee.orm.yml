@@ -1,0 +1,50 @@
+AppBundle\Entity\Employee:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        firstName:
+            type: string
+            length: 255
+            column: first_name
+        lastName:
+            type: string
+            length: 255
+            column: last_name
+        gender:
+            type: smallint
+        dateOfBirth:
+            type: date
+            column: date_of_birth
+        comment:
+            type: text
+            nullable: true
+        salary:
+            type: decimal
+            precision: 10
+            scale: 2
+        isActive:
+            type: boolean
+            column: is_active
+            options:
+                default: true
+        isRemoved:
+            type: boolean
+            column: is_removed
+            options:
+                default: false
+    oneToMany:
+        phones:
+            targetEntity: AppBundle\Entity\Phone
+            mappedBy: employee
+            cascade: [persist]
+        addresses:
+            targetEntity: AppBundle\Entity\Address
+            mappedBy: employee
+            cascade: [persist]
+    lifecycleCallbacks: {  }

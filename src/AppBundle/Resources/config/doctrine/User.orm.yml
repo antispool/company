@@ -1,0 +1,38 @@
+AppBundle\Entity\User:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        firstName:
+            type: string
+            length: 255
+            column: first_name
+            nullable: true
+        lastName:
+            type: string
+            length: 255
+            column: last_name
+            nullable: true
+        username:
+            type: string
+            length: 255
+            unique: true
+        email:
+            type: string
+            length: 255
+            unique: true
+        password:
+            type: string
+            length: 255
+        lastLogin:
+            type: date
+            column: last_login
+            nullable: true
+        role:
+            type: smallint
+    lifecycleCallbacks: {  }

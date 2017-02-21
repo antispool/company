@@ -1,0 +1,7 @@
+app_employee:
+    resource: "@AppBundle/Resources/config/routing/employee.yml"
+    prefix:   /employee
+
+app_security:
+    resource: "@AppBundle/Resources/config/routing/security.yml"
+    prefix:   /

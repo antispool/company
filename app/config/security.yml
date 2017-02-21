@@ -1,0 +1,41 @@
+security:
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: md5
+            encode_as_base64: false
+            iterations: 0
+    providers:
+        jwt_user_provider:
+            id: jwt_user_provider
+        our_db_provider:
+            entity:
+                class: AppBundle:User
+                property: username
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        secured_area:
+            pattern: ^/employee
+            stateless: true
+            simple_preauth:
+                authenticator: jwt_authenticator
+            provider: jwt_user_provider
+        main:
+            anonymous: ~
+            form_login:
+                success_handler: security.authentication.handler
+                login_path: login
+                check_path: login
+                default_target_path: employee_index
+            logout:
+                path: /logout
+                target: /
+                delete_cookies:
+                    jwt: { path: null, domain: null}
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/employee/new, roles: [ROLE_ADMIN, ROLE_MANAGER]}
+        - { path: ^/employee/\d+/delete, roles: [ROLE_ADMIN]}
+        - { path: ^/employee/\d+/edit, roles: [ROLE_ADMIN, ROLE_WORKER]}
+        - { path: ^/employee, roles: [ROLE_ADMIN, ROLE_WORKER, ROLE_MANAGER]}

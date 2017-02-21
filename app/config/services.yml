@@ -1,0 +1,13 @@
+services:
+    security.authentication.handler:
+        class: AppBundle\Security\Handler\SecurityHandler
+        arguments: ["@security.http_utils", "@router", "%secret_key%"]
+
+    jwt_user_provider:
+        class: AppBundle\Security\JwtUserProvider
+        arguments: ['@doctrine', '%secret_key%']
+
+    jwt_authenticator:
+        class:  AppBundle\Security\JwtAuthenticator
+        public: false
+

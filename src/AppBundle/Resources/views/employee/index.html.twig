@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Employees list</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Gender</th>
+                <th>Dateofbirth</th>
+                <th>Comment</th>
+                <th>Salary</th>
+                <th>Isactive</th>
+                <th>Isremoved</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td>{{ employee.id }}</td>
+                <td>{{ employee.firstName }}</td>
+                <td>{{ employee.lastName }}</td>
+                <td>{{ employee.gender }}</td>
+                <td>{% if employee.dateOfBirth %}{{ employee.dateOfBirth|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ employee.comment }}</td>
+                <td>{{ employee.salary }}</td>
+                <td>{% if employee.isActive %}Yes{% else %}No{% endif %}</td>
+                <td>{% if employee.isRemoved %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_WORKER') %}
+                        <a href="{{ path('employee_edit', { 'id': employee.id }) }}" class="btn btn-link">edit</a>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('employee_delete', { 'id': employee.id }) }}" class="btn btn-link">delete</a>
+                    {% endif %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_MANAGER') %}
+        <a href="{{ path('employee_new') }}" class="btn btn-success">Create a new employee</a>
+    {% endif %}
+{% endblock %}

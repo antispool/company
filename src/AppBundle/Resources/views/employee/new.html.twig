@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/app/project/js/employee.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <h1>Employee creation</h1>
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    <div class="control-group">
+        <label class="control-label">first name</label>
+        <div class="controls">
+            {{ form_widget(form.firstName) }}
+            {{ form_errors(form.firstName) }}
+        </div>
+
+    </div>
+    <div class="control-group">
+        <label class="control-label">last name</label>
+        <div class="controls">
+            {{ form_widget(form.lastName) }}
+            {{ form_errors(form.lastName) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">gender</label>
+        <div class="controls">
+            {{ form_widget(form.gender) }}
+            {{ form_errors(form.gender) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">date of birth</label>
+        <div class="controls">
+            {{ form_widget(form.dateOfBirth) }}
+            {{ form_errors(form.dateOfBirth) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">comment</label>
+        <div class="controls">
+            {{ form_widget(form.comment) }}
+            {{ form_errors(form.comment) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">salary</label>
+        <div class="controls">
+            {{ form_widget(form.salary) }}
+            {{ form_errors(form.salary) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">is active</label>
+        <div class="controls">
+            {{ form_widget(form.isActive) }}
+            {{ form_errors(form.isActive) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">addresses</label>
+        <div class="controls">
+            {{ form_widget(form.addresses) }}
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">phones</label>
+        <div class="controls">
+            {{ form_widget(form.phones) }}
+        </div>
+    </div>
+    <input type="submit" value="Create" />
+
+
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('employee_index') }}">Back to the list</a>
+        </li>
+    </ul>
+
+{% endblock %}
